@@ -21,6 +21,13 @@ function RecipeCreate({ addRecipe }) {
   
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const requiredFields = ["name", "cuisine", "photo", "ingredients", "preparation"];
+    if (requiredFields.some((field) => formData[field].trim() === "")) {
+    alert("Please fill in all required fields.");
+    return;
+    }
+
     addRecipe(formData);
     setFormData({ ...initialFormState });
   };
